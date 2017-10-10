@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>parent > child</title>
+	<!--在给定的父元素下匹配所有的子元素  返回值:Array<Element(s)>-->
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<script type="text/javascript" src="../resource/jquery-3.2.1.js"></script>
+  </head>
+  
+  <body>
+  	<form>
+	  <label>Name:</label>
+	  <input name="name" />
+	  <fieldset>
+	      <label>Newsletter:</label>
+	      <input name="newsletter" />
+	 </fieldset>
+	</form>
+	<input name="none" />
+	
+	<script type="text/javascript">
+		$(function (){
+			console.log($("form > input"));
+		});
+	</script>
+  </body>
+</html>

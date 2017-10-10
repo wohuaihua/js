@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>selector1,selector2,selectorN</title>
+	<!-- 将每一个选择器匹配到的元素合并后一起返回。 返回值:Array<Element(s)>-->
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<script type="text/javascript" src="../resource/jquery-3.2.1.js"></script>
+  </head>
+  
+  <body>
+  	<div>div</div>
+	<p class="myClass">p class="myClass"</p>
+	<span>span</span>
+	<p class="notMyClass">p class="notMyClass"</p>
+	<script type="text/javascript">
+		$(function (){
+			console.log($("div,span,p.myClass"));
+		});
+	</script>
+  </body>
+</html>

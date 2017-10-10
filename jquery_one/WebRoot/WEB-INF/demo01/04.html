@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>*</title>
+	<!-- 匹配所有元素 多用于结合上下文来搜索。返回值:Array<Element(s)>-->
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<script type="text/javascript" src="../resource/jquery-3.2.1.js"></script>
+  </head>
+  
+  <body>
+  	<div>DIV</div>
+	<span>SPAN</span>
+	<p>P</p>
+	<script type="text/javascript">
+		$(function(){
+			console.log($("*"));
+		});
+	</script>
+  </body>
+</html>

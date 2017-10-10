@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>id选择器</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+	<script type="text/javascript" src="../resource/jquery-3.2.1.js"></script>
+  </head>
+  
+  <body>
+  	<div id="notMe"><p>id="notMe"</p></div>
+	<div id="myDiv">id="myDiv"</div>
+	
+	<script type="text/javascript">
+		$(function (){
+			var element=$("#myDiv");
+			console.log(element);
+		});
+	</script>
+  </body>
+</html>
