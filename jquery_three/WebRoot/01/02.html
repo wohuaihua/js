@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>核心</title>
+	<!-- jQuery(html,[ownerDocument])  返回值jquery-->
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<script type="text/javascript" src="../resource/jquery-3.2.1.js"></script>
+	<script type="text/javascript">
+		function log(param){
+			console.log(param);
+		}
+	</script>
+  </head>
+  
+  <body>
+  	<script type="text/javascript">
+  		$(function (){
+  			$("<div><p>huaihua</p></div>").appendTo("body");
+  		});
+  	</script>
+  	
+  	<script type="text/javascript">
+  		//创建一个 <input> 元素必须同时设定 type 属性。因为微软规定 <input> 元素的 type 只能写一次。
+  		//在 IE 中无效:
+  		//$("<input>").attr("type", "checkbox");
+  		$(function (){
+  			$("<input type='checkbox'>").appendTo("body");
+  		});
+  	</script>
+  	
+  	<script type="text/javascript">
+  		$(function (){
+  			$("<div>",{
+  				"class":"test",
+  				text:"Click me!",
+  				click:function (){
+  					//如果存在（不存在）就删除（添加）一个类。
+  					//$(this).toggleClass("test");
+  					//log(1111);
+  				}
+  			}).appendTo("body");
+  		});
+  	</script>
+  	
+  	<form>
+  	</form>
+  	<script type="text/javascript">
+  		$(function (){
+  			$("<input>",{
+  				type:"text",
+  				val:"Test",
+  				focusion:function(){//获取焦点
+  					$(this).addClass("active");
+  				},
+  				focusout:function(){//失去焦点
+  					$(this).removeClass("active");
+  				}
+  			}).appendTo("form");
+  		});
+  	</script>
+  </body>
+</html>

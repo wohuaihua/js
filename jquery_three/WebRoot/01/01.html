@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>核心</title>
+	<!-- jQuery([selector,[context]]) 用来查找的字符串 ,context:作为待查找的 DOM 元素集、文档或 jQuery 对象。-->
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<script type="text/javascript" src="../resource/jquery-3.2.1.js"></script>
+	<script type="text/javascript">
+		function log(param){
+			console.log(param);
+		}
+	</script>
+  </head>
+  
+  <body>
+  	<div>
+  		<p>找到所有 p 元素，并且这些元素都必须是 div 元素的子元素。</p>
+  		<p></p>
+  	</div>
+  	
+  	<script type="text/javascript">
+  		$(function (){
+  			log($("div > p"));
+  		});
+  	</script>
+  	
+  	<script type="text/javascript">
+  		$(function(){
+  			//是否有双引号
+  			$(document.body).css("background","green");
+  		});
+  	</script>
+  	
+  	<form action="" id="myFrom">
+  		<input type="text">
+  		<input type="text">
+  	</form>
+  	<script type="text/javascript">
+  		$(function (){
+  			$(myFrom.elements).hide();
+  		});
+  	</script>
+  	
+  	
+  	<script type="text/javascript">
+  		$(function (){
+  			log($("input:text",document.forms[0]));
+  		});
+  	</script>
+  	
+  	<script type="text/javascript">
+  		//在一个由 AJAX 返回的 XML 文档中，查找所有的 div 元素。
+  		//$("div", xml.responseXML);
+  	</script>
+  </body>
+</html>

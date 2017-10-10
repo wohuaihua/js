@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>核心</title>
+	<!-- $(document).ready()的简写。 -->
+	<!-- 
+		允许你绑定一个在DOM文档载入完成后执行的函数。
+		这个函数的作用如同$(document).ready()一样，只不过用这个函数时
+		，需要把页面中所有需要在 DOM 加载完成时执行的$()操作符都包装到其中来。
+		从技术上来说，这个函数是可链接的－－但真正以这种方式链接的情况并不多。
+		 你可以在一个页面中使用任意多个$(document).ready事件。
+	 -->
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<script type="text/javascript" src="../resource/jquery-3.2.1.js"></script>
+	<script type="text/javascript">
+		function log(param){
+			console.log(param);
+		}
+	</script>
+  </head>
+  
+  <body>
+  	<script type="text/javascript">
+  		$(function(){
+		  // 文档就绪
+		});
+  	</script>
+  	
+  	<script type="text/javascript">
+  		//使用 $(document).ready() 的简写，同时内部的 jQuery 代码依然使用 $ 作为别名，而不管全局的 $ 为何。
+  		jQuery(function($) {
+		  // 你可以在这里继续使用$作为别名...
+		});
+  	</script>
+  </body>
+</html>
