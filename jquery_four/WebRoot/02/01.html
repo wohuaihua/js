@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>load</title>
+	<!-- 
+		load(url, [data], [callback]) 返回值:jQuery
+		载入远程 HTML 文件代码并插入至 DOM 中。
+		默认使用 GET 方式 - 传递附加参数时自动转换为 POST 方式。
+		jQuery 1.2 中，可以指定选择符，来筛选载入的 HTML 文档，DOM 中将仅插入筛选出的 HTML 代码。
+		语法形如 "url #some > selector"。
+	 -->
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<script type="text/javascript" src="../resource/jquery-3.2.1.js"></script>
+  </head>
+  
+  <body>
+  	<b>jQuery Links:</b>
+	<ul id="links"></ul>
+	<script type="text/javascript">
+		$(function (){
+			$("#links").load("test.html div");
+		});
+	</script>
+  </body>
+</html>

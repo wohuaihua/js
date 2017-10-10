@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>load</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<script type="text/javascript" src="../resource/jquery-3.2.1.js"></script>
+  </head>
+  
+  <body>
+  	<div id="feeds"></div>
+  	<script type="text/javascript">
+  		//同上，但是以 POST 形式发送附加参数并在成功时显示信息。
+  		$("#feeds").load("test.html", {limit: 25}, function(){
+		   alert("The last 25 entries in the feed have been loaded");
+		 });
+  	</script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ajax</title>
+	<!-- 
+		返回值:XMLHttpRequest
+	 -->
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+	<script type="text/javascript" src="../resource/jquery-3.2.1.js"></script>
+  </head>
+  
+  <body>
+  	<script type="text/javascript">
+  		//加载并执行一个js文件
+  		$(function (){
+  			$.ajax({
+  				type:"GET",
+  				url:"test.js",
+  				dataType:"script"
+  			});
+  		});
+  	</script>
+  </body>
+</html>

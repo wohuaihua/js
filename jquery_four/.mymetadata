@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="jquery_four"
+  id="myeclipse.1507647504859"
+  context-root="/jquery_four"
+  j2ee-spec="5.0"
+  archive="jquery_four.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>get</title>
+	<!-- 
+		jQuery.get(url, [data], [callback], [type]) 	返回值:XMLHttpRequest
+		
+		url:待载入页面的URL地址
+		data:待发送 Key/value 参数。
+		callback:载入成功时回调函数。
+		type:返回内容格式，xml, html, script, json, text, _default。
+		
+		通过远程 HTTP GET 请求载入信息。
+		这是一个简单的 GET 请求功能以取代复杂 $.ajax 。请求成功时可调用回调函数。如果需要在出错时执行函数，请使用 $.ajax。
+		jQuery 1.12 中 jQuery.post 和 jQuery.get 支持对象参数，这样一来好处还比较多，比如设置回调函数的context，
+		或者跨域 post 时可以withCredential: true。用法可以参考最后一个示例。
+	 -->
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<script type="text/javascript" src="../resource/jquery-3.2.1.js"></script>
+  </head>
+  
+  <body>
+  	<script type="text/javascript">
+  		//请求页面
+  		$(function (){
+	  		$.get("test.html",{ name: "John", time: "2pm" },function (data){
+	  			alert("Data Loaded: " + data);
+	  		});	
+  		});
+  	</script>
+  </body>
+</html>
