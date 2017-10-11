@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>getScript</title>
+	
+	<!-- jQuery.getScript(url, [callback]) 返回值:XMLHttpRequest-->
+	<!-- 
+		
+		url,[callback]String
+		url:待载入 JS 文件地址。
+		callback:成功载入后回调函数。
+		
+		jQuery 1.2 版本之前，getScript 只能调用同域 JS 文件。 
+		1.2中，您可以跨域调用 JavaScript 文件。
+		注意：Safari 2 或更早的版本不能在全局作用域中同步执行脚本。
+		如果通过 getScript 加入脚本，请加入延时函数。 
+	-->
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<script type="text/javascript" src="../resource/jquery-3.2.1.js"></script>
+  </head>
+  
+  <body>
+  	<button id="go">» Run</button>
+	<div class="block"></div>
+  	<script type="text/javascript">
+  		jQuery.getScript("http://dev.jquery.com/view/trunk/plugins/color/jquery.color.js", function(){
+		  $("#go").click(function(){
+		    $(".block").animate( { backgroundColor: 'pink' }, 1000)
+		      .animate( { backgroundColor: 'blue' }, 1000);
+		  });
+		});
+  	</script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>post</title>
+	<!-- jQuery.post(url, [data], [callback], [type]) 返回值:XMLHttpRequest -->
+	<!-- 
+		url:发送请求地址。
+		data:待发送 Key/value 参数。
+		callback:发送成功时回调函数。
+		type:返回内容格式，xml, html, script, json, text, _default。
+		
+		
+		通过远程 HTTP POST 请求载入信息。
+		这是一个简单的 POST 请求功能以取代复杂 $.ajax 。请求成功时可调用回调函数。如果需要在出错时执行函数，请使用 $.ajax。
+		jQuery 1.12 中 jQuery.post 和 jQuery.get 支持对象参数，这样一来好处还比较多，
+		比如设置回调函数的context，或者跨域 post 时可以withCredential: true。
+	 -->
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<script type="text/javascript" src="../resource/jquery-3.2.1.js"></script>
+  </head>
+  
+  <body>
+  	<script type="text/javascript">
+  		//向服务器传递数据数组（同时仍然忽略返回值）
+  		//$.post("test.php", { 'choices[]': ["Jon", "Susan"] });
+  		
+  		//使用 ajax 请求发送表单数据
+  		//$.post("test.php", $("#testform").serialize());
+  		$.post("test.js",{name:'huaihua'},function(data){
+  			//js必须是xml格式，data为XMLDocument
+  			console.log(data);
+  		},"xml");
+  		
+  		/**
+  		这样不可以
+  		(function (){
+			return '<user><name>liu</name></user>';
+		})();
+  		*/
+  	</script>
+  </body>
+</html>
