@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+	<TITLE> ZTREE DEMO - Simple Data</TITLE>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="../css/demo.css" type="text/css">
+	<link rel="stylesheet" href="../css/zTreeStyle/zTreeStyle.css" type="text/css">
+	<script type="text/javascript" src="../resource/jquery-1.4.4.min.js"></script>
+	<script type="text/javascript" src="../resource/jquery.ztree.core.js"></script>
+	<script type="text/javascript" src="../resource/jquery.ztree.exhide.js"></script>
+	<script type="text/javascript" src="../resource/fuzzysearch.js"></script>
+	<SCRIPT type="text/javascript">
+		<!--
+		var setting = {
+				check: {
+					enable: true
+				},
+				view: {
+					nameIsHTML: true, 			
+					selectedMulti: false
+				},
+				edit: {
+					enable: false,
+					editNameSelectAll: false
+				},
+				data: {
+					simpleData: {
+						enable: true
+					}
+				}
+		};
+
+		var zNodes =[
+			{ id:1, pId:0, name:"保单基本信息", open:true},
+			{ id:11, pId:1, name:"'车险核保输入对象' 的 投保单对象 出险次数 大于 -99999"},
+			{ id:2, pId:0, name:"车辆信息", open:true},
+			{ id:21, pId:2, name:"'车险核保输入对象' 的 投保单对象 的 车辆信息 的 新车购置价 小于 -99999 "},
+			{ id:3, pId:0, name:"被保人", isParent:true, open:true},
+			{ id:31, pId:3, name:"'车险核保输入对象' 的 被保险人 名称是 \"String\""}
+		];
+
+		$(document).ready(function(){
+			$.fn.zTree.init($("#treeDemo"), setting, zNodes);
+			fuzzySearch('treeDemo','#key',null,true); 
+		});
+		//-->
+	</SCRIPT>
+ </HEAD>
+
+<BODY>
+<div class="content_wrap">
+	关键字：<input type="text" id="key" value="" class="empty" /><br/>
+	<div class="zTreeDemoBackground left">
+		<ul id="treeDemo" class="ztree"></ul>
+	</div>
+</div>
+</BODY>
+</HTML>
