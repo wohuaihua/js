@@ -44,6 +44,7 @@
 
 				},
 				dropTree2Dom: function(e, treeId, treeNodes, targetNode, moveType) {
+					console.log(e.target);
 					var domId = "dom_" + treeNodes[0].getParentNode().id;
 					if (moveType == null && (domId == e.target.id || $(e.target).parents("#" + domId).length > 0)) {
 						var zTree = $.fn.zTree.getZTreeObj("treeDemo");
@@ -54,7 +55,29 @@
 							newDom.removeClass("domBtn_Disabled");
 							newDom.addClass("domBtn");
 						} else {
-							$("#" + domId).append("<span class='domBtn' domId='" + treeNodes[0].id + "'>" + treeNodes[0].name + "</span>");
+							var nodeValue=treeNodes[0].name;
+							if(treeNodes[0].name.indexOf("-99999")){
+								nodeValue=nodeValue.replace('-99999','<input type="text" value="value"/>');
+							}
+							var content=$("<div domId='" + treeNodes[0].id + "'>" + nodeValue + "</div>");
+							content.prepend('<span id="I4um">▼</span>');
+							content=content.append('<span id="I5um">▼</span>');
+							//$("#" + domId).append("<div domId='" + treeNodes[0].id + "'>" + nodeValue + "</div>");
+							$("#" + domId).append(content);
+							$("#I4um").append('<span style="border-style : groove" class="option"><option id="1">11111</option><option id="2">22222</option><option id="3">33333</option></span>');
+							$("#I4um").bind("click",function(event){
+								 	event.stopPropagation();
+					                $(this).find(".option").toggle();
+					                $(this).parent().siblings().find(".option").hide();
+							});
+							 $(".option li").click(function(){
+					                var value=$(this).text();
+					                var key=$(this).attr('data-key');
+					                $(this).parent().siblings("#I4um").text(value);
+					                $("#I4um").text(value);
+					                $("#I4um").attr('data-key',key)
+					         });
+							
 						}
 						MoveTest.updateType();
 					} else if ( $(e.target).parents(".domBtnDiv").length > 0) {
@@ -281,7 +304,7 @@
 				var length=ul.length;
 				var divId="dom_"+length;
 				var deleteId="delete_"+length;
-				var newLi=$('<li class="title"><h2>规则'+length+'</h2><div class="domBtnDiv" id="test"><input type="button" value="删除" id="'+deleteId+'"/><div id=divId class="categoryDiv"></div></div></li>');
+				var newLi=$('<li class="title"><div class="domBtnDiv" id="test"><input type="button" value="删除" id="'+deleteId+'"/><div id=divId class="categoryDiv"></div></div></li>');
 				$(".info").append(newLi);
 				
 				console.log(ul.length);
@@ -302,11 +325,12 @@
 .ztree li span.button.switch.level0 {display:none;}
 .dom_line {margin:2px;border-bottom:1px gray dotted;height:1px}
 .domBtnDiv {display:block;padding:2px;border:1px gray dotted;background-color:powderblue}
-.categoryDiv {display:inline-block; width:900px;height: 250px}
+.categoryDiv {display:inline-block; width:500px;height: 200px}
 .domBtn {display:inline-block;cursor:pointer;padding:2px;margin:2px 10px;border:1px gray solid;background-color:#FFE6B0}
 .domBtn_Disabled {display:inline-block;cursor:default;padding:2px;margin:2px 10px;border:1px gray solid;background-color:#DFDFDF;color:#999999}
 .dom_tmp {position:absolute;font-size:12px;}
 .active {background-color: #93C3CF}
+.option {display:none;}
 	</style>
  </HEAD>
 
@@ -319,11 +343,11 @@
 	<input type="button" value="添加" id="adddiv"/>
 	<div class="right">
 		<ul class="info">
-			<li class="title"><h2>规则1</h2>
-				<div class="domBtnDiv" id="test">
+			<li class="title">
+<!-- 				<div class="domBtnDiv" id="test"> -->
 					<div id="dom_1" class="categoryDiv"></div>
 					<div class="dom_line"></div>
-				</div>
+<!-- 				</div> -->
 			</li>
 		</ul>
 	</div>

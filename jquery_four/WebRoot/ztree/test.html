@@ -1,0 +1,115 @@
+ <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul{
+            padding: 0;
+            margin: 0;
+        }
+        .mod_select{
+            float: left;
+            line-height: 18px;
+            margin-top: 9px;
+            cursor:default;
+        }
+        .box-select{
+            width: 143px;
+            height: 16px;
+            position: relative;
+            display: inline-block;
+            padding: 6px 10px;
+            background: url("../img/popSelect.png")  138px 12px no-repeat;
+            border: 1px solid #cccccc;
+        }
+        .box-select-bg{
+            background: url("../img/icon-triangle.png")  138px 12px no-repeat!important;
+        }
+        .box-select-bg2{
+            background: url("../img/icon-triangle2.png")  138px 12px no-repeat;
+        }
+        .select_txt{
+            color: #555;
+            display:inline-block;
+            width:135px;
+            line-height:18px;
+            cursor:text;
+        }
+        .box-select .option{
+            width:161px;
+            border:solid 1px #EDE7D6;
+            position:absolute;
+            z-index: 9999;
+            top:29px;
+            left:0;
+            display:none;
+        }
+        .box-select .option li{
+            color: #555;
+            display:block;
+            height:26px;
+            line-height:26px;
+            text-align:left;
+            padding:0 10px;
+            margin-left: 0;
+            width:141px;
+            background:#fff;
+            border-style: none;
+        }
+        .box-select .option li:hover{
+            color: #555;
+            background:#e5e5e5;
+        }
+
+    </style>
+    <script type="text/javascript" src="../resource/jquery-1.4.4.min.js"></script>
+</head>
+<body>
+<div id="content" style="height:860px;width: 500px;background-color: #999;overflow-y: scroll;">
+    <div class="mod_select" style="margin-right: 20px;  background-color: rgba(0,0,0,0.2);height: 30px;box-sizing: border-box;border-radius: 5px;">
+        <div class="box-select box-select-bg2" style="border: none;">
+            <span class="select_txt" style="color: whitesmoke;">全部</span>
+            <ul class="option">
+                <li data-key="3">全部</li>
+                <li data-key="1">离线</li>
+                <li data-key="2">告警</li>
+                <li data-key="0">在线</li>
+            </ul>
+        </div>
+        <input  type="hidden" data-key="" value="" id="select_value" />
+    </div>
+    <script type="text/javascript">
+        /* 下拉框 */
+        $(document).ready(function(){
+            $(".box-select").click(function(event){
+                event.stopPropagation();
+                $(this).find(".option").toggle();
+                $(this).parent().siblings().find(".option").hide();
+                $(this).toggleClass("box-select-bg");
+            });
+            $(document).click(function(event){
+                var eo=$(event.target);
+                if($(".box-select").is(":visible") && eo.attr("class")!="option" && !eo.parent(".option").length)
+                    $('.option').hide();
+            });
+
+            $(".option li").click(function(){
+                var value=$(this).text();
+                var key=$(this).attr('data-key');
+                $(this).parent().siblings(".select_txt").text(value);
+                $("#select_value").val(value);
+                $("#select_value").attr('data-key',key)
+            });
+            $(".box-select").bind("click","li",function(){
+                var _value = $(this).attr("data-key");
+
+                 // do something you want ...
+
+            })
+        });
+
+    </script>
+</div>
+</body>
+</html>
