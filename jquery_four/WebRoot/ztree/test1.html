@@ -4,58 +4,50 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript" src="../resource/jquery-1.4.4.min.js"></script>
 <title>导航——点击弹出内容</title>
-<style type="text/css">
-.navgation{margin:0;padding:0;list-style-type:none;position:relative;}
-.navgation li {float:left;}
-.navgation a{padding:3px 6px;background-color:orange;color:white;text-decoration:none;float:left;height:24px;}
-.navgation a:hover {background-color:white;color:blue;text-decoration:underline;}
-.navgation div{display:none;position:absolute;top:30px;}
+<style type="text/css" media="screen">
+*{margin:0;padding:0;}
+body{font-size: 16px;color: #000;padding: 50px;}
+.dowebok dl{position: relative;width: 180px;}
+.dowebok dl dt{border:#ddd solid 1px;height: 28px;line-height: 28px;font-size: 14px;padding-left: 5px;overflow: hidden;}
+.dowebok dl dt b{display: block;position: absolute;top: 5px;right:15px;width: 10px;height: 10px;border:#333 solid 1px;border-width: 0 0 1px 1px;transform:rotate(-45deg);}
+.dowebok dl dd{position: absolute;width: 100%;left: 0px;top: 30px;border:#ddd solid 1px;border-top:0px;box-sizing: border-box;display: none;}
+.dowebok dl dd span{display: block;height: 30px;line-height: 30px;text-align: center;font-size: 14px;color: #666;background: #fff;}
+.dowebok dl dd span:hover{background-color: #139ff1;}
 </style>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $(".navgation input").each(function () {
-                var this_div = $(".navgation div");
-                var _inx = $(".navgation input").index(this);
-                $(this).click(
-                function () { this_div.eq(_inx).slideToggle(); },
-                function () { this_div.eq(_inx).slideToggle(); }
-           );
-            });
-            
-            $("option").bind("click",function(){
-            	console.log(this.value);
-            	$("#button").val(this.value);
-            });
-        });
-        
-    </script>
-</head>
-<body>
-    <form id="form1" runat="server">
-    <div>
-        <ul class="navgation">
-            <li><input type="button" id="button" value="链接1"/>
-            <div style="border-style : groove">
-            	<option id="1">11111</option>
-            	<option id="2">22222</option>
-            	<option id="3">33333</option>
-            </div>
-            </li>
-            <li><input type="button" id="button1" value="链接2"/>
-            <div>这里放下拉内容2</div>
-            </li>
-            <li><input type="button" id="button2" value="链接3"/>
-            <div>这里放下拉内容3</div>
-            </li>
-            <li><input type="button" id="button3" value="链接4"/>
-            <div>这里放下拉内容4</div>
-            </li>
-            <li><input type="button" id="button4" value="链接5"/>
-            <div>这里放下拉内容5</div>
-            </li>
-        </ul>
-    </div>
 
-    </form>
+<body> 
+<div class="dowebok">
+   <dl>
+     <dt><span>请选择</span><b></b></dt>
+     	<dd>
+            <span>天津</span>
+            <span>杭州</span>
+            <span>北京</span>
+        </dd>
+   </dl>
+</div>
+ 
+<script>
+$(function(){
+    $('.dowebok dl dt').click(function(){
+        $(this).siblings('dd').toggle();  //下拉隐藏显示
+    })
+     
+    $('.dowebok dl dd span').click(function(){
+        var html = $(this).html();
+        $('.dowebok dl dt').find('span').html(html);
+        $('.dowebok dl dd').hide();
+    })
+        //判断点击其他地方时候下拉列表隐藏
+    $("body,html").on("mousedown",function(e){
+        var target=$(e.target);//该点击目标对象
+        if(!(target.closest(".dowebok dl dd").length) && !(target.closest('.dowebok dl dt').length) && !(target.closest(self).length) && $(".dowebok dl dd").is(":visible")){
+            $(".dowebok dl dd").css({"display":"none"});
+             
+        }
+    })
+     
+});
+</script>
 </body>
 </html>

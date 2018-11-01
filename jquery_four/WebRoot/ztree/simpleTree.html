@@ -48,7 +48,7 @@
 					var domId = "dom_" + treeNodes[0].getParentNode().id;
 					if (moveType == null && (domId == e.target.id || $(e.target).parents("#" + domId).length > 0)) {
 						var zTree = $.fn.zTree.getZTreeObj("treeDemo");
-						zTree.removeNode(treeNodes[0]);
+						//zTree.removeNode(treeNodes[0]);
 
 						var newDom = $("span[domId=" + treeNodes[0].id + "]");
 						if (newDom.length > 0) {
@@ -61,23 +61,13 @@
 							}
 							var content=$("<div domId='" + treeNodes[0].id + "'>" + nodeValue + "</div>");
 							content.prepend('<span id="I4um">▼</span>');
-							content=content.append('<span id="I5um">▼</span>');
+							content=content.append('<span id="I5um">▼</span><img id="delete" src="../resource/img/delete.gif">');
+							//content=content.appendTo('<span id="row"></span>');
 							//$("#" + domId).append("<div domId='" + treeNodes[0].id + "'>" + nodeValue + "</div>");
 							$("#" + domId).append(content);
-							$("#I4um").append('<span style="border-style : groove" class="option"><option id="1">11111</option><option id="2">22222</option><option id="3">33333</option></span>');
-							$("#I4um").bind("click",function(event){
-								 	event.stopPropagation();
-					                $(this).find(".option").toggle();
-					                $(this).parent().siblings().find(".option").hide();
+							$("#delete").bind("click",function(){
+								content.remove();
 							});
-							 $(".option li").click(function(){
-					                var value=$(this).text();
-					                var key=$(this).attr('data-key');
-					                $(this).parent().siblings("#I4um").text(value);
-					                $("#I4um").text(value);
-					                $("#I4um").attr('data-key',key)
-					         });
-							
 						}
 						MoveTest.updateType();
 					} else if ( $(e.target).parents(".domBtnDiv").length > 0) {

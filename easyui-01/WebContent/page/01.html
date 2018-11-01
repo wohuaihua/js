@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+<link rel="stylesheet" type="text/css" href="../demo.css">
+<script type="text/javascript" src="../css/datatables.min.css"></script>
+<script type="text/javascript" src="../resource/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="../resource/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../resource/datatables.min.js"></script>
+<script type="text/javascript">
+	function query(msg){
+		var keyword=$("#query").val();
+		console.log("keyword"+keyword);
+		if(""==keyword){
+			var html='<li class="margin-bottom:10px;"><a id="BOM_MAP" href="javascript:void(0)" onclick="showcontent(\'BOM_MAP\')">BOM_MAP</a><li>';
+			html+='<li class="margin-bottom:10px;"><a id="RULES" href="javascript:void(0)" onclick="showcontent(\'RULES\')">RULES</a><li>';
+			$("#content ul").html(html);
+		}
+	}
+	function showcontent(language){
+		$('#content ul').html('Introduction to ' + language + ' language');
+	}
+	$(function(){
+		$(document).ready( function () {
+		    $('#datatable').DataTable();
+		} );
+	});
+</script>
+</head>
+<body>
+	<h2>Fluid Panel</h2>
+	<p>This example shows how to set the width of Panel to a percentage of its parent container.</p>
+	<div style="margin:20px 0 10px 0;">
+	</div>
+	<div class="easyui-layout" style="width:100%;height:400px;">
+		<div region="west" split="true" title="Navigator" style="width:30%;">
+			<div style="margin-bottom:20px;margin-left: 20px;margin-top: 20px">
+				<input id="query" class="easyui-textbox" style="width:70%;height:32px;margin-right:20px">
+				<a href="javascript:void(0)" onclick="query()" class="easyui-linkbutton" style="width:20%;height:32px;margin-left: 5px">查询</a>
+			</div>
+			<p style="margin-left:20px;font-size: 15px;">系统缓存项:</p>
+			<ul>
+				<!-- <li><a href="javascript:void(0)" onclick="showcontent('erlang')">Erlang</a></li> -->
+				<li class="margin-bottom:10px;"><a id="BOM_MAP" href="javascript:void(0)" onclick="showcontent('BOM_MAP')">BOM_MAP</a><li>
+				<li class="margin-bottom:10px;"><a id="RULES" href="javascript:void(0)" onclick="showcontent('RULES')">RULES</a><li>
+			</ul>
+		</div>
+		
+		<div id="content" region="center" title="Language" style="padding:5px;">
+			<div id="rulecaches">
+		    	<table id="datatable" class="cell-border" style="width:100% ;text-align: center;">
+			        <thead>
+			            <tr>
+			                <th>序号</th>
+			                <th>缓存项</th>
+			                <th>操作</th>
+			            </tr>
+			        </thead>
+			        <tbody>
+			            <tr>
+			                <td>61</td>
+			                <td>2011/04/25</td>
+			                <td>$320,800</td>
+			            </tr>
+			       </tbody>
+		   		 </table>
+		   	</div>
+		</div>
+	</div>
+</body>
+
+</html>
