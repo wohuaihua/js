@@ -6,51 +6,107 @@
 <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
 <link rel="stylesheet" type="text/css" href="../themes/icon.css">
 <link rel="stylesheet" type="text/css" href="../demo.css">
-<script type="text/javascript" src="../css/datatables.min.css"></script>
+<link rel="stylesheet" type="text/css" href="../css/datatables.css" />
 <script type="text/javascript" src="../resource/jquery-3.2.1.js"></script>
 <script type="text/javascript" src="../resource/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="../resource/datatables.min.js"></script>
 <script type="text/javascript">
-	function query(msg){
+	var cachelidata;
+	var tabledata;
+	function query(){
 		var keyword=$("#query").val();
-		console.log("keyword"+keyword);
-		if(""==keyword){
-			var html='<li class="margin-bottom:10px;"><a id="BOM_MAP" href="javascript:void(0)" onclick="showcontent(\'BOM_MAP\')">BOM_MAP</a><li>';
-			html+='<li class="margin-bottom:10px;"><a id="RULES" href="javascript:void(0)" onclick="showcontent(\'RULES\')">RULES</a><li>';
-			$("#content ul").html(html);
+		if(keyword==""){
+			if(!cachelidata){
+				return;
+			}
+			cachelidata.each(function(i,element){
+				$("#ul").append(element);
+			});
+			freshTable(tabledata);
+			return ;
 		}
+		var reg = new RegExp(keyword,"i");
+		var li=$("#ul li:even a");
+		if(!cachelidata){
+			cachelidata=$("#ul li:even");
+		}
+		var arr=new Array();
+		cachelidata.find("a").each(function(i,element){
+			if((element.text).match(reg)){
+				arr.push(element.parentNode);
+			}
+		});
+		if(arr.length==0){
+			$("#ul").empty();
+			return;
+		}
+		$("#ul").empty();
+		arr.forEach(function(element){
+			$("#ul").append(element);
+		});
+		
 	}
-	function showcontent(language){
-		$('#content ul').html('Introduction to ' + language + ' language');
+	function showcontent(){
+		newDataList=[
+		  ['a1', 'b1','c1']
+		];
+		freshTable(newDataList);
+		alert( 'There are '+data.length+' row(s) of data in this table' );
+// 		table.clear();
+// 		table.rows.add(data.toArray());
+// 		table.draw();
 	}
+	
+	function freshTable(array){
+		var table = $('#datatable').DataTable();
+		table.clear();
+		table.rows.add(array);
+		table.draw();
+	}
+	
 	$(function(){
 		$(document).ready( function () {
-		    $('#datatable').DataTable();
-		} );
+		    $('#datatable').DataTable({
+		    	
+		    	"paging": false,//禁止分页
+		    	"info": false,//是否显示页脚信息
+		    	"language": {
+		             "sZeroRecords" : "没有您要搜索的内容",
+		             "sSearch": "搜索"
+		          },
+		    });
+		    tabledata=$('#datatable').DataTable().data().toArray();
+		});
+		
+		$(document).keyup(function(event){
+			  if(event.keyCode ==13){
+				  query();
+			  }
+		});
 	});
 </script>
 </head>
 <body>
-	<h2>Fluid Panel</h2>
-	<p>This example shows how to set the width of Panel to a percentage of its parent container.</p>
+	<h2>规则缓存项列表</h2>
+	<p>可以删除系统中的缓存，可能出现问题，出现问题时，只需重新点击页面。</p>
 	<div style="margin:20px 0 10px 0;">
 	</div>
 	<div class="easyui-layout" style="width:100%;height:400px;">
-		<div region="west" split="true" title="Navigator" style="width:30%;">
+		<div region="west" split="true" title="导航" style="width:30%;">
 			<div style="margin-bottom:20px;margin-left: 20px;margin-top: 20px">
 				<input id="query" class="easyui-textbox" style="width:70%;height:32px;margin-right:20px">
 				<a href="javascript:void(0)" onclick="query()" class="easyui-linkbutton" style="width:20%;height:32px;margin-left: 5px">查询</a>
 			</div>
 			<p style="margin-left:20px;font-size: 15px;">系统缓存项:</p>
-			<ul>
+			<ul id="ul">
 				<!-- <li><a href="javascript:void(0)" onclick="showcontent('erlang')">Erlang</a></li> -->
 				<li class="margin-bottom:10px;"><a id="BOM_MAP" href="javascript:void(0)" onclick="showcontent('BOM_MAP')">BOM_MAP</a><li>
 				<li class="margin-bottom:10px;"><a id="RULES" href="javascript:void(0)" onclick="showcontent('RULES')">RULES</a><li>
 			</ul>
 		</div>
 		
-		<div id="content" region="center" title="Language" style="padding:5px;">
-			<div id="rulecaches">
+		<div id="content" region="center" title="缓存项" style="padding:5px;">
+			<div id="rulecaches" style="margin: 5px 5px">
 		    	<table id="datatable" class="cell-border" style="width:100% ;text-align: center;">
 			        <thead>
 			            <tr>
@@ -62,6 +118,11 @@
 			        <tbody>
 			            <tr>
 			                <td>61</td>
+			                <td>2011/04/25</td>
+			                <td>$320,800</td>
+			            </tr>
+			            <tr>
+			                <td>62</td>
 			                <td>2011/04/25</td>
 			                <td>$320,800</td>
 			            </tr>
